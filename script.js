@@ -110,13 +110,19 @@ function debugFleuryConnect() {
 }
 /* === EASTER EGG CONTACT === */
 const contactForm = document.getElementById('contactForm');
-#easter-egg-corner {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 50px;   /* Largeur de la zone cliquable */
-    height: 50px;  /* Hauteur de la zone cliquable */
-    z-index: 9999; /* Pour être sûr qu'il soit au-dessus de tout */
-    cursor: default; /* Curseur normal pour ne pas griller le secret */
-    background: transparent;
-}
+
+openBtn.addEventListener('click', () => {
+    sidenav.style.left = "0";
+});
+
+// Fermer le menu
+closeBtn.addEventListener('click', () => {
+    sidenav.style.left = "-250px";
+});
+
+// Fermer si on clique en dehors du menu
+window.addEventListener('click', (e) => {
+    if (e.target !== sidenav && e.target !== openBtn && !openBtn.contains(e.target)) {
+        sidenav.style.left = "-250px";
+    }
+});
